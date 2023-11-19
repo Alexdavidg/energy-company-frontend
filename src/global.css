@@ -133,9 +133,48 @@ input {
 }
 
 #gestionContainer2 {
-  background: linear-gradient(45deg, #3498db, #f5f5f5, rgb(60, 220, 231), #a112f3);
+  background: linear-gradient(45deg, #3498db, #969494, rgb(60, 220, 231), rgb(255, 255, 255));
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+.select-container select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 5px;
+  appearance: none; /* Oculta las flechas de selección del navegador */
+}
+
+.select-container::after {
+  content: '\25BC'; /* Unicode para la flecha hacia abajo */
+  font-size: 20px;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* Evita que el icono sea seleccionable */
+}
+
+/* Estilo al pasar el ratón sobre el select */
+.select-container:hover select {
+  border-color: #3498db;
+}
+
+/* Estilo al enfocar el select */
+.select-container select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
 @keyframes gradient {
