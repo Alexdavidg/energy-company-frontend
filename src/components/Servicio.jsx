@@ -13,41 +13,29 @@ export const Servicio = (props) => {
 
     // Definimos los arrays para los títulos, descripciones, imágenes y enlaces de los servicios
     let arrrayTitles = [
-        "Crear factura",
         "¿Problemas?",
     ]
 
     let arrayDescriptions = [
-        "Descripcion de factura.",
-        "Descripcion de problemas.",
+        "Aqui puedes manejar los activos.",
     ]
 
     let arrayImages = [
-        "https://uploadgerencie.com/imagenes/requisitos-factura-soporte-costos.png",
-        "https://www.luzdetexas.com/wp-content/uploads/electricity-meter-1.jpg"
+        "https://www.luzdetexas.com/wp-content/uploads/electricity-meter-1.jpg",
     ]
 
     let arrayLinks = [
-        "/servicios/factura",
         "/servicios/problemas",
     ]
 
     // Usamos useEffect para actualizar los estados en función del servicio proporcionado a través de las props
     useEffect(() => {
 
-        if (props.service == "factura") {
+        if (props.service == "problemas") {
             setServicioImage(arrayImages[0])
             setServicioTitle(arrrayTitles[0])
             setServicioDescription(arrayDescriptions[0])
             setServicioLink(arrayLinks[0])
-            
-        }
-
-        if (props.service == "problemas") {
-            setServicioImage(arrayImages[1])
-            setServicioTitle(arrrayTitles[1])
-            setServicioDescription(arrayDescriptions[1])
-            setServicioLink(arrayLinks[1])
         }
       
     }, [props.service])

@@ -15,33 +15,22 @@ export const TarjetaProblema = (props) => {
   // Definimos los arrays para los títulos, descripciones e imágenes de los problemas
   let arrayTitulos = [
     "Agregar activos",
-    "¿Se te fue la luz?",
-    "¿El contador se dañó",
-    "¿Aun no te llega la factura?",
-    "¿Te cortaron la luz",
+    "Edita o elimina el activo",
   ]
 
   let arrayDescripciones = [
-    "Descripcion: se te fue la luz",
-    "Descripcion: se daño el contador",
-    "Descripcion: no te llega la factura",
-    "Descripcion: te cortaron la luz",
+    "Quiere Agregar un Activo?",
+    "Edita o elimina el activo",
   ]
 
   let arrayImagenes = [
     "https://media.istockphoto.com/id/688550958/es/vector/signo-de-negro-s%C3%ADmbolo-positivo.jpg?s=612x612&w=0&k=20&c=LyVTdpQ0VUUnhYVyY6Emy6CXx96dUOU9O7GXmEN_Vxo=",
-    "https://vasalsuperoalacomer.com/comer/images/notas/01-sinluz-txt.jpg",
-    "https://c8.alamy.com/compes/h0chh3/el-viejo-estilo-de-la-rueda-analogica-medidor-de-electricidad-h0chh3.jpg",
-    "https://www.mapfre.com.pe/media/LUZ_ABRIDORA.jpg",
-    "https://bogota.gov.co/sites/default/files/2022-02/medidores.jpg"
+    "https://static.vecteezy.com/system/resources/thumbnails/000/380/520/small/Basic_Elements__28122_29.jpg",
   ];
 
   let arrayLinks = [
     "/problemas/gestion",
-    "/problemas/luz",
-    "/problemas/contador",
-    "/problemas/factura",
-    "/problemas/corte",
+    "/problemas/edit",
   ]
 
   // Usamos useEffect para actualizar los estados en función del problema proporcionado a través de las props
@@ -54,31 +43,11 @@ export const TarjetaProblema = (props) => {
       setProblemaLink(arrayLinks[0])
     }
     
-    if (props.problem == "luz") {
+    if (props.problem == "edit") {
       setProblemaImage(arrayImagenes[1])
       setProblemaTitulo(arrayTitulos[1])
       setProblemaDescripcion(arrayDescripciones[1])
-    }
-
-    if (props.problem == "contador") {
-      setProblemaImage(arrayImagenes[2])
-      setProblemaTitulo(arrayTitulos[2])
-      setProblemaDescripcion(arrayDescripciones[2])
-      
-    }
-
-    if (props.problem == "factura") {
-      setProblemaImage(arrayImagenes[3])
-      setProblemaTitulo(arrayTitulos[3])
-      setProblemaDescripcion(arrayDescripciones[3])
-      
-    }
-
-    if (props.problem == "corte") {
-      setProblemaImage(arrayImagenes[4])
-      setProblemaTitulo(arrayTitulos[4])
-      setProblemaDescripcion(arrayDescripciones[4])
-      
+      setProblemaLink(arrayLinks[1])
     }
     
   }, [props.problem])
