@@ -32,8 +32,8 @@ function Login() {
   };
 
   return (
-    <div className="App">
-      <h1 className="title">Inicio de Sesión en React</h1>
+    <div className="registro-container">
+      <h1 className="title">Inicio de Sesión</h1>
 
       <form onSubmit={handleFormSubmit}>
         <label htmlFor="username" className="label">Nombre de Usuario:</label>
