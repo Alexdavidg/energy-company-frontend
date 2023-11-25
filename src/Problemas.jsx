@@ -14,8 +14,9 @@ export const Problemas = () => {
             </div>
             <div id="problemasContainer" className="w-full flex flex-col mt-8 gap-4">
               <div id="tarjetasFila" className="w-full flex flex-col md:flex-row gap-4">
-                <TarjetaProblema problem="activos"/>
-                <TarjetaProblema problem="edit"/>
+                <TarjetaProblema problem="vehiculos"/>
+                <TarjetaProblema problem="edificios"/>
+                <TarjetaProblema problem="generator"/>
               </div>
             </div>
         </section>

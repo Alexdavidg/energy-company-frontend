@@ -14,40 +14,51 @@ export const TarjetaProblema = (props) => {
 
   // Definimos los arrays para los títulos, descripciones e imágenes de los problemas
   let arrayTitulos = [
-    "Agregar activos",
-    "Edita o elimina el activo",
+    "Vehiculos",
+    "Edificios",
+    "Generadores"
   ]
 
   let arrayDescripciones = [
-    "Quiere Agregar un Activo?",
-    "Edita o elimina el activo",
+    "Gestiona los vehiculos",
+    "Gestiona los edificios",
+    "Gestiona los generadores"
   ]
 
   let arrayImagenes = [
-    "https://media.istockphoto.com/id/688550958/es/vector/signo-de-negro-s%C3%ADmbolo-positivo.jpg?s=612x612&w=0&k=20&c=LyVTdpQ0VUUnhYVyY6Emy6CXx96dUOU9O7GXmEN_Vxo=",
-    "https://static.vecteezy.com/system/resources/thumbnails/000/380/520/small/Basic_Elements__28122_29.jpg",
+    "https://png.pngtree.com/png-vector/20190930/ourlarge/pngtree-car-line-icon-vector-png-image_1772261.jpg",
+    "https://cdn.icon-icons.com/icons2/3021/PNG/512/office_buildings_building_city_offices_icon_188687.png",
+    "https://cdn-icons-png.flaticon.com/512/1546/1546765.png"
   ];
 
   let arrayLinks = [
     "/problemas/gestion",
-    "/problemas/edit",
+    "/problemas/edificio",
+    "/problemas/generator"
   ]
 
   // Usamos useEffect para actualizar los estados en función del problema proporcionado a través de las props
   useEffect(() => {
 
-    if (props.problem == "activos") {
+    if (props.problem == "vehiculos") {
       setProblemaImage(arrayImagenes[0])
       setProblemaTitulo(arrayTitulos[0])
       setProblemaDescripcion(arrayDescripciones[0])
       setProblemaLink(arrayLinks[0])
     }
     
-    if (props.problem == "edit") {
+    if (props.problem == "edificios") {
       setProblemaImage(arrayImagenes[1])
       setProblemaTitulo(arrayTitulos[1])
       setProblemaDescripcion(arrayDescripciones[1])
       setProblemaLink(arrayLinks[1])
+    }
+
+    if (props.problem == "generator") {
+      setProblemaImage(arrayImagenes[2])
+      setProblemaTitulo(arrayTitulos[2])
+      setProblemaDescripcion(arrayDescripciones[2])
+      setProblemaLink(arrayLinks[2])
     }
     
   }, [props.problem])

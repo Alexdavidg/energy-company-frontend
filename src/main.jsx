@@ -14,6 +14,8 @@ import { Servicios } from './Servicios.jsx'
 import { Problemas } from './Problemas.jsx'
 import { Nosotros } from './Nosotros.jsx'
 import Gestion from './gestion.jsx'
+import Edificio from './edificio.jsx'
+import Generator from './generator.jsx'
 import Ingresar from './Ingresar.jsx'
 import Login from './Login.jsx'
 
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
   {
     path: 'problemas/gestion',
     element: <Gestion/>
+  },
+  {
+    path: 'problemas/edificio',
+    element: <Edificio/>
+  },
+  {
+    path: 'problemas/generator',
+    element: <Generator/>
   },
   {
     path: 'Ingresar',
