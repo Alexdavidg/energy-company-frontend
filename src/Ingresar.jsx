@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const RegistroUsuario = () => {
   const [userData, setUserData] = useState({
@@ -16,14 +16,32 @@ const RegistroUsuario = () => {
     }));
   };
 
+  const handleSSOLogin = async () => {
+    try {
+      // Realiza la autenticación SSO aquí y obtén el token de acceso
+      const ssoToken = await performSSOAuthentication();
+
+      // Puedes almacenar el token de acceso en el estado o en una cookie según tus necesidades
+      // setAccessToken(ssoToken);
+    } catch (error) {
+      console.error('Error en la autenticación SSO:', error);
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      // Llama a la función de autenticación SSO antes de enviar los datos al backend
+      await handleSSOLogin();
+
+      // Ahora puedes incluir el token de acceso en las solicitudes al backend
       const response = await fetch('http://localhost:8000/registrarusuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          // Agrega el token de acceso a la autorización si es necesario
+          // 'Authorization': `Bearer ${accessToken}`,
         },
         body: JSON.stringify(userData),
       });
@@ -38,6 +56,12 @@ const RegistroUsuario = () => {
       console.error('Error al enviar datos al backend:', error);
     }
   };
+
+  useEffect(() => {
+    // Puedes realizar acciones adicionales después de montar el componente
+    // Por ejemplo, verificar si ya hay una sesión de SSO activa
+    handleSSOLogin();
+  }, []);
 
   return (
     <div className="registro-container">
