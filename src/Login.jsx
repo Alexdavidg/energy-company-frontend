@@ -9,7 +9,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch('http://localhost:8000/sso-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -20,10 +20,16 @@ function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        setMessage(data.message);
+        
+        // Asumiendo que el SSO devuelve un token de sesión
+        // Maneja el token según sea necesario en tu aplicación
+        const sessionToken = data.sessionToken;
+        // ... lógica para manejar el token de sesión ...
+
+        setMessage('Inicio de sesión exitoso');
       } else {
         const data = await response.json();
-        setMessage(data.detail);
+        setMessage(data.detail || 'Error al iniciar sesión');
       }
     } catch (error) {
       console.error('Error:', error);
