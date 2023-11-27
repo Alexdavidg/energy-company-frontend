@@ -1,27 +1,12 @@
 import { useState, useEffect } from 'react';
-import { MainNavbar } from "./components/MainNavbar"
+import { MainNavbar } from "./components/MainNavbar";
+import AssetForm from './components/AssetForm'; // Asegúrate de tener la ruta correcta
 
 function Gestion() {
-  const [formData, setFormData] = useState({
-    name: '',
-    state: '',
-    kilometers: '',
-    type: '',
-    func: '',
-  });
-
   const [assets, setAssets] = useState([]);
   const [message, setMessage] = useState('');
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  };
-
-  const handleSaveData = async () => {
+  const handleSaveData = async (formData) => {
     try {
       const response = await fetch('http://localhost:8000/savedata', {
         method: 'POST',
@@ -40,6 +25,7 @@ function Gestion() {
       console.error('Error saving data:', error);
     }
   };
+
 
   const handleDeleteAsset = async (name) => {
     try {
@@ -77,73 +63,8 @@ function Gestion() {
       <MainNavbar mode="black" />
       <div className="p-20">
         <h2 className='title'>Save Data</h2>
-        <form>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder="Enter name..."
-              required
-            />
-          </div>
-          <div className="form-group select-container">
-            <label htmlFor="state">State:</label>
-            <select
-              id="state"
-              name="state"
-              value={formData.state}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="true">True</option>
-              <option value="false">False</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="kilometers">Kilometers:</label>
-            <input
-              type="text"
-              id="kilometers"
-              name="kilometers"
-              value={formData.kilometers}
-              onChange={handleInputChange}
-              placeholder="Enter kilometers..."
-              required
-            />
-          </div>
-          <div className="form-group select-container">
-            <label htmlFor="type">Type:</label>
-            <select
-              id="type"
-              name="type"
-              value={formData.type}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="Car">Car</option>
-              <option value="Truck">Truck</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="func">Function:</label>
-            <input
-              type="text"
-              id="func"
-              name="func"
-              value={formData.func}
-              onChange={handleInputChange}
-              placeholder="Enter function..."
-              required
-            />
-          </div>
-          <button className='button' type="button" onClick={handleSaveData}>
-            Save Data
-          </button>
-        </form>
+        <AssetForm onSaveData={handleSaveData} buttonText="Save Data" />
+        
         <h2 className='title mt-8'>List of Assets</h2>
         <ul>
           {assets.map((asset, index) => (
