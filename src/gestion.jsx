@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MainNavbar } from "./components/MainNavbar";
-import AssetForm from './components/AssetForm'; // Asegúrate de tener la ruta correcta
+import AssetForm from './components/Form1'; 
 
 function Gestion() {
   const [assets, setAssets] = useState([]);
